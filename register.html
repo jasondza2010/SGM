@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>Register</title>
+  <link rel="shortcut icon" href="images/register.png" type="image/png">
+        <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+            <link href="css/bootstrap.min.css" rel="stylesheet">
+            <link href="css/register_style.css" rel="stylesheet" type="text/css">
+			
+			<!-- SweetAlert CSS -->	
+			<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		
+		<script type="text/javascript">
+		
+			function validateEmail(emailField){
+				var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+				if (reg.test(emailField.value) == false) 
+				{
+					return true;
+				}
+				return false;
+			}
+		
+			function validate()
+			{
+				var cust_id = document.getElementById("cust_id");
+				var cust_name = document.getElementById("cust_name");
+				var cust_email = document.getElementById("cust_email");
+				var password = document.getElementById("password");
+				var co_password = document.getElementById("co_password");
+				var address = document.getElementById("address");
+				
+				if(cust_id.value.trim() == "")
+				{
+					swal(
+					{
+						title: "Invalid Customer Id",
+						text: "Please enter valid Customer Id",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('cust_id').style.borderColor = "red";
+					return false;		
+				}
+				
+				else if(cust_name.value.trim() == "")
+				{
+					swal(
+					{
+						title: "Invalid Customer Name",
+						text: "Please enter valid Customer Name",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('cust_id').style.borderColor = "green";
+					document.getElementById('cust_name').style.borderColor = "red";
+					return false;		
+				}
+				
+				else if(cust_email.value.trim() == "" || validateEmail(cust_email))
+				{
+					swal(
+					{
+						title: "Invalid Email",
+						text: "Please enter valid Email",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('cust_id').style.borderColor = "green";
+					document.getElementById('cust_name').style.borderColor = "green";
+					document.getElementById('cust_email').style.borderColor = "red";
+					return false;		
+				}
+				
+				else if(password.value.trim() == "")
+				{
+					swal(
+					{
+						title: "Invalid Password",
+						text: "Please enter valid Password",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('cust_id').style.borderColor = "green";
+					document.getElementById('cust_name').style.borderColor = "green";
+					document.getElementById('cust_email').style.borderColor = "green";
+					document.getElementById('password').style.borderColor = "red";
+					return false;		
+				}
+				
+				else if(password.value !== co_password.value || co_password.value.trim() == "")
+				{
+					swal(
+					{
+						title: "Confirm Password does not match",
+						text: "Please reenter confirm password",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('cust_id').style.borderColor = "green";
+					document.getElementById('cust_name').style.borderColor = "green";
+					document.getElementById('cust_email').style.borderColor = "green";
+					document.getElementById('password').style.borderColor = "green";
+					document.getElementById('co_password').style.borderColor = "red";
+					return false;		
+				}
+				else if(address.value.trim() == "")
+				{
+					swal(
+					{
+						title: "Invalid Address",
+						text: "Please enter valid address",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('cust_id').style.borderColor = "green";
+					document.getElementById('cust_name').style.borderColor = "green";
+					document.getElementById('cust_email').style.borderColor = "green";
+					document.getElementById('password').style.borderColor = "green";
+					document.getElementById('co_password').style.borderColor = "green";
+					document.getElementById('address').style.borderColor = "red";
+					return false;		
+				}
+				
+				else
+				{	
+					return true;
+				}			
+			}
+		</script>
+			
+  </head>
+  <body>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+  <h1>Register</h1>
+    <!-- Register Form -->
+    <form onsubmit= "return validate()">
+      <input type="text" id="cust_id" class="fadeIn second" name="cust_id" placeholder="Customer Id" required>
+	  <input type="text" id="cust_name" class="fadeIn second" name="cust_name" placeholder="Customer Name" required>
+	  <input type="text" id="cust_email" class="fadeIn second" name="cust_email" placeholder="Customer Email" required>
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" required>
+	  <input type="password" id="co_password" class="fadeIn third" name="co_password" placeholder="Confirm Password" required>
+	  <textarea rows="2" type="text" id="address" class="fadeIn third" name="address" placeholder="Address" required></textarea>
+      <input type="submit" class="fadeIn fourth" value="Register">
+    </form>
+  </div>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

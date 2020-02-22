@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>Login</title>
+  <link rel="shortcut icon" href="images/login.png" type="image/png">
+        <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+            <link href="css/bootstrap.min.css" rel="stylesheet">
+            <link href="css/login_style.css" rel="stylesheet" type="text/css">
+			
+		<!-- SweetAlert CSS -->	
+			<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		
+		<script type="text/javascript">
+		
+
+			function validate()
+			{
+				var username = document.getElementById("username");
+				var password = document.getElementById("password")
+
+				
+				if(username.value.trim() == "")
+				{
+					swal(
+					{
+						title: "Invalid Username",
+						text: "Please enter valid Username",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('username').style.borderColor = "red";
+					return false;		
+				}
+				
+				else if(password.value.trim() == "")
+				{
+					swal(
+					{
+						title: "Invalid Passowrd",
+						text: "Please enter valid Passowrd",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('username').style.borderColor = "green";
+					document.getElementById('password').style.borderColor = "red";
+					return false;		
+				}
+				
+				else if(username != "Jason" && password.value != "Jason")
+				{
+					swal(
+					{
+						title: "Invalid Credentials",
+						text: "Please check entered username and password",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('username').style.borderColor = "red";
+					document.getElementById('password').style.borderColor = "red";
+					return false;		
+				}
+				
+				else
+				{	
+					return true;
+				}			
+			}
+		</script>	
+		
+  </head>
+  <body>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="images/login.png" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form  onsubmit= "return validate()">
+      <input type="text" id="username" class="fadeIn second" name="username" placeholder="Username">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

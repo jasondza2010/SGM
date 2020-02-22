@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>Entry</title>
+  <link rel="shortcut icon" href="images/register.png" type="image/png">
+        <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+            <link href="css/bootstrap.min.css" rel="stylesheet">
+            <link href="css/add_style.css" rel="stylesheet" type="text/css">
+		
+		<!-- SweetAlert CSS -->	
+			<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		
+		<script type="text/javascript">
+		
+			function validate()
+			{
+				var trans_type = document.getElementById("trans_type");
+				var amount = document.getElementById("amount");
+				var cust_vend = document.getElementById("cust_vend");
+				var payment_status = document.getElementById("payment_status");
+				var date = document.getElementById("date");
+				var timestamp = document.getElementById("timestamp");
+				var cust_id = document.getElementById("cust_id");
+				
+				var object = {
+					object_timestamp: timestamp,
+				};
+				
+				if(trans_type.value == "1")
+				{
+					swal(
+					{
+						title: "Invalid Transaction",
+						text: "Please enter valid transaction",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('trans_type').style.borderColor = "red";
+					return false;		
+				}
+				else if(amount.value.trim() == "" || isNaN(amount.value))
+				{
+					swal(
+					{
+						title: "Invalid Amount",
+						text: "Please enter valid amount",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('trans_type').style.borderColor = "green";
+					document.getElementById('amount').style.borderColor = "red";
+					return false;		
+				}
+				else if(cust_vend.value.trim() == "")
+				{
+					swal(
+					{
+						title: "Invalid Customer/Vendor",
+						text: "Please enter valid Customer/Vendor",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('trans_type').style.borderColor = "green";
+					document.getElementById('amount').style.borderColor = "green";
+					document.getElementById('cust_vend').style.borderColor = "red";
+					return false;		
+				}
+				
+				else if(payment_status.value == "1")
+				{
+					swal(
+					{
+						title: "Invalid Payment status",
+						text: "Please select valid payment status",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('trans_type').style.borderColor = "green";
+					document.getElementById('amount').style.borderColor = "green";
+					document.getElementById('cust_vend').style.borderColor = "green";
+					document.getElementById('payment_status').style.borderColor = "red";
+					return false;		
+				}
+				else if(timestamp.value.trim() == "" || isNaN(timestamp.value))
+				{
+					swal(
+					{
+						title: "Invalid Timestamp",
+						text: "Please enter timestamp in format 'YYYYMMDDHHMMSS' ",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('trans_type').style.borderColor = "green";
+					document.getElementById('amount').style.borderColor = "green";
+					document.getElementById('cust_vend').style.borderColor = "green";
+					document.getElementById('payment_status').style.borderColor = "green";
+					document.getElementById('date').style.borderColor = "green";
+					document.getElementById('timestamp').style.borderColor = "red";
+					return false;		
+				}
+				else if(cust_id.value.trim() == "")
+				{
+					swal(
+					{
+						title: "Invalid Customer Id",
+						text: "Please enter a valid customer id",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					});
+					document.getElementById('trans_type').style.borderColor = "green";
+					document.getElementById('amount').style.borderColor = "green";
+					document.getElementById('cust_vend').style.borderColor = "green";
+					document.getElementById('payment_status').style.borderColor = "green";
+					document.getElementById('date').style.borderColor = "green";
+					document.getElementById('timestamp').style.borderColor = "green";
+					document.getElementById('cust_id').style.borderColor = "red";
+					return false;		
+				}					
+				else
+				{	
+					return true;
+				}			
+			}
+		</script>
+		
+  </head>
+  <body>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+  <h1>Transaction Entry</h1>
+    <!-- Register Form -->
+    <form onsubmit= "return validate()">
+		<select class="custom-select custom-select-mg mb-1 fadeIn second" id="trans_type" type="text">
+			<option value="1" selected>&nbsp;&nbsp; Transaction Type</option>
+			<option value="2">&nbsp;&nbsp; Credit</option>
+			<option value="3">&nbsp;&nbsp; Debit</option>
+			<option value="4">&nbsp;&nbsp; Credit Note</option>
+			<option value="5">&nbsp;&nbsp; Debit Note</option>
+		</select>
+		
+		<input type="text" id="amount" class="fadeIn second" name="amount" placeholder="Amount" required>
+		<input type="text" id="cust_vend" class="fadeIn second" name="cust_vend" placeholder="Customer/Vendor" required>
+		<select class="custom-select custom-select-mg mb-1 fadeIn second" id="payment_status" type="text">
+			<option value="1" selected>&nbsp;&nbsp; Payment Status</option>
+			<option value="2">&nbsp;&nbsp; Pending</option>
+			<option value="3">&nbsp;&nbsp; Paid</option>
+			<option value="4">&nbsp;&nbsp; Overdue</option>
+		</select>
+		
+		<div class="form-group fadeIn second"> <!-- Date input -->
+			<input class="form-control" id="date" class="fadeIn second" name="date" placeholder="Due Date" type="text" required/>
+		</div>
+		<input type="text" id="timestamp" class="fadeIn second" name="timestamp" placeholder="Timestamp" required>
+		<input type="text" id="cust_id" class="fadeIn second" name="cust_id" placeholder="Customer Id" required>
+      <input type="submit" class="fadeIn fourth" value="Enter">
+    </form>
+  </div>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<!--  jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
+  </body>
+</html>
